@@ -4,8 +4,9 @@ var questions = document.getElementById("question")
 var startingPage = document.getElementById("startingPageMl")
 var questionNum = 0
 var content = document.getElementById("quizContent")
-var addQuestion
-var currentindex = 0
+// var addQuestion 
+var answerButtons = document.getElementById("answer")
+var index = 0
 var questionArray = [
 {
     "question": "Commonly used data types DO NOT Include:",
@@ -38,38 +39,56 @@ console.log("hello")
 // GIVEN I am taking a code quiz
 
 // WHEN I click the start button
-startBtn.addEventListener("click", function() {
+startBtn.addEventListener("click", begin);
+    function begin() {
     startingPage.setAttribute("style", "display: none");
     console.log("starting page is hidden");
-    addQuestion = questionArray[currentindex]
-    console.log(addQuestion)
+    // addQuestion = questionArray[index]
+    addQuestions ();
+    // displayQuestion(addQuestion)
 
-});
+    for (var i = 0; i < 4; i++){
+        var addAnswers = document.createElement("button");
+        // var addQuestions = document.createElement("");
+        addAnswers.className ="btn-primary btn-block text-left"
+        addAnswers.textContent = questionArray[index].answers[i];
+        answerButtons.appendChild(addAnswers)
+    };
 
-function displayQuestion(question){
-    questions.innerText=questionArray.question
-    questionArray.answers.forEach(element => {
-     var button =document.createElement("button")
-    button.className="btn-primary btn-block text-left"
-    button.innerText=element
-    // questionanswers.innerHTML=""
-    questionanswers.appendChild(button)
-    button.addEventListener("click", displaynextQuestion)
-    });
-}
+    function addQuestions () {
+
+        questions.textContent = "";
+
+        
+
+
+    }
+
+}; 
+// function displayQuestion(addQuestion){
+//     questions.innerText=questionArray.question
+//     questionArray.answers.forEach(element => {
+//     var button = document.createElement("button")
+//     button.className="btn-primary btn-block text-left"
+//     button.innerText=element
+//     // questionanswers.innerHTML=""
+//     questionanswers.appendChild(button)
+//     button.addEventListener("click", displaynextQuestion)
+//     });
+
 // function displaynextQuestion(e){
-//     currentindex++
-//     // if(currentindex < questionArray.length){
-//     //     correction(e.target.innerText == nextQuestions.answer)
-//     //     questionanswers.innerHTML=""
-//         if(currentindex < questionsArray.length){    
-//             nextQuestions= questions[currentindex]
+//     index++
+//     if(index < questionArray.length){
+//         correction(e.target.innerText == addQuestion.answers)
+//         question.innerHTML=""
+//         if(index < questionsArray.length){    
+//             nextQuestions= questions[index]
 //             displayQuestion(nextQuestions)  
 //         }else {
 //             currentindex = 0
 //             displayQuestion(nextQuestions)  
 //         }
-
+//     }
 // THEN a timer starts and I am presented with a question
 // for(var i = 0; i < questionArray.questions.length; i++) {
 //     // questions.append.()
