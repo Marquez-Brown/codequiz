@@ -4,7 +4,8 @@ var questions = document.getElementById("question")
 var startingPage = document.getElementById("startingPageMl")
 var questionNum = 0
 var content = document.getElementById("quizContent")
-
+var addQuestion
+var currentindex = 0
 var questionArray = [
 {
     "question": "Commonly used data types DO NOT Include:",
@@ -33,23 +34,52 @@ var questionArray = [
 },
 ]
 
-
+console.log("hello")
 // GIVEN I am taking a code quiz
 
 // WHEN I click the start button
-$(startBtn).on("click", function() {
-    $(startingPage).html("");
+startBtn.addEventListener("click", function() {
+    startingPage.setAttribute("style", "display: none");
+    console.log("starting page is hidden");
+    addQuestion = questionArray[currentindex]
+    console.log(addQuestion)
+
 });
-// THEN a timer starts and I am presented with a question
-for(var i = 0; i < questionArray.length; i++) {
-    var qEl = $("<p>");
-    // question.addClass ("col-sm-3");
+
+function displayQuestion(question){
+    questions.innerText=questionArray.question
+    questionArray.answers.forEach(element => {
+     var button =document.createElement("button")
+    button.className="btn-primary btn-block text-left"
+    button.innerText=element
+    // questionanswers.innerHTML=""
+    questionanswers.appendChild(button)
+    button.addEventListener("click", displaynextQuestion)
+    });
 }
+// function displaynextQuestion(e){
+//     currentindex++
+//     // if(currentindex < questionArray.length){
+//     //     correction(e.target.innerText == nextQuestions.answer)
+//     //     questionanswers.innerHTML=""
+//         if(currentindex < questionsArray.length){    
+//             nextQuestions= questions[currentindex]
+//             displayQuestion(nextQuestions)  
+//         }else {
+//             currentindex = 0
+//             displayQuestion(nextQuestions)  
+//         }
+
+// THEN a timer starts and I am presented with a question
+// for(var i = 0; i < questionArray.questions.length; i++) {
+//     // questions.append.()
+//     // question.addClass ("col-sm-3");
+// }
 // WHEN I answer a question
-var content = $("<h3>");
-content.textContent(questionArray[i]);
-qEl.append(h3El);
-questionArray.append(qEl)
+// var content = $("<h3>");
+// content.textContent(questionArray[i]);
+// qEl.append(h3El);
+// questionArray.append(qEl)
 // THEN I am presented with another question
 
 // WHEN I answer a question incorrectly
