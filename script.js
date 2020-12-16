@@ -8,6 +8,8 @@ var content = document.getElementById("quizContent")
 var addedButtons = document.getElementsByTagName("button")
 var answerButtons = document.getElementById("answer")
 var index = 0
+
+//object of questions, answers, and correct answers
 var questionArray = [
 {
     "question": "Commonly used data types DO NOT Include:",
@@ -36,23 +38,18 @@ var questionArray = [
 },
 ]
 
-// console.log(begin)
-// GIVEN I am taking a code quiz
-
-// WHEN I click the start button
+//starts quiz and deletes starting content
 startBtn.addEventListener("click", begin);
 
     function begin() {
     startingPage.setAttribute("style", "display: none");
     console.log("starting page is hidden");
-    // addQuestion = questionArray[index]
     addNextAnswer ();
     addQuestions ();
 }
-    // add next answer
+    // adds the next answer
     
         function addNextAnswer () {
-            // console.log(index)
         answerButtons.innerHTML=""
     for (var i = 0; i < 4; i++){
         var addAnswers = document.createElement("button");
@@ -63,6 +60,7 @@ startBtn.addEventListener("click", begin);
     };
     index++
 };
+    //adds the next question
     function addQuestions () {
         // console.log(index)
         // console.log(addQuestions)
@@ -74,6 +72,7 @@ startBtn.addEventListener("click", begin);
             
         
         };
+        //event listeners to go through array and add content after button press
         answerButtons.addEventListener("click", addNextAnswer); answerButtons.addEventListener("click",  addQuestions); 
    
        
