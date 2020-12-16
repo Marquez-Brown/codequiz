@@ -5,6 +5,7 @@ var startingPage = document.getElementById("startingPageMl")
 var questionNum = 0
 var content = document.getElementById("quizContent")
 // var addQuestion 
+var addedButtons = document.getElementsByTagName("button")
 var answerButtons = document.getElementById("answer")
 var index = 0
 var questionArray = [
@@ -35,11 +36,12 @@ var questionArray = [
 },
 ]
 
-console.log("hello")
+console.log(begin)
 // GIVEN I am taking a code quiz
 
 // WHEN I click the start button
 startBtn.addEventListener("click", begin);
+
     function begin() {
     startingPage.setAttribute("style", "display: none");
     console.log("starting page is hidden");
@@ -49,56 +51,32 @@ startBtn.addEventListener("click", begin);
 
     for (var i = 0; i < 4; i++){
         var addAnswers = document.createElement("button");
-        // var addQuestions = document.createElement("");
         addAnswers.className ="btn-primary btn-block text-left"
         addAnswers.textContent = questionArray[index].answers[i];
         answerButtons.appendChild(addAnswers)
     };
 
     function addQuestions () {
-
+        console.log(addQuestions)
         questions.textContent = "";
+        index++
+        var newQuestions = questionArray.question;
+        questions.append(newQuestions);
 
+        // addedButtons.addEventListener("click", function() {
+        //     begin ()
         
-
-
+        // });
+        
     }
 
 }; 
-// function displayQuestion(addQuestion){
-//     questions.innerText=questionArray.question
-//     questionArray.answers.forEach(element => {
-//     var button = document.createElement("button")
-//     button.className="btn-primary btn-block text-left"
-//     button.innerText=element
-//     // questionanswers.innerHTML=""
-//     questionanswers.appendChild(button)
-//     button.addEventListener("click", displaynextQuestion)
-//     });
-
-// function displaynextQuestion(e){
-//     index++
-//     if(index < questionArray.length){
-//         correction(e.target.innerText == addQuestion.answers)
-//         question.innerHTML=""
-//         if(index < questionsArray.length){    
-//             nextQuestions= questions[index]
-//             displayQuestion(nextQuestions)  
-//         }else {
-//             currentindex = 0
-//             displayQuestion(nextQuestions)  
-//         }
-//     }
+  
 // THEN a timer starts and I am presented with a question
-// for(var i = 0; i < questionArray.questions.length; i++) {
-//     // questions.append.()
-//     // question.addClass ("col-sm-3");
+
 // }
 // WHEN I answer a question
-// var content = $("<h3>");
-// content.textContent(questionArray[i]);
-// qEl.append(h3El);
-// questionArray.append(qEl)
+
 // THEN I am presented with another question
 
 // WHEN I answer a question incorrectly
