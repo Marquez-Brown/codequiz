@@ -26,7 +26,7 @@ var questionArray = [
 },
 {
     "question": "String values must be enclosed within _____ when being assigned to variables.",
-    "answers": ["co mmas", "curly brackets", "quotes", "parentheses"],
+    "answers": ["commas", "curly brackets", "quotes", "parentheses"],
     "correct": "quotes"
 },
 {
@@ -36,7 +36,7 @@ var questionArray = [
 },
 ]
 
-console.log(begin)
+// console.log(begin)
 // GIVEN I am taking a code quiz
 
 // WHEN I click the start button
@@ -49,30 +49,34 @@ startBtn.addEventListener("click", begin);
     addNextAnswer ();
     addQuestions ();
 }
-    // displayQuestion(addQuestion)
+    // add next answer
+    
         function addNextAnswer () {
+            // console.log(index)
+        answerButtons.innerHTML=""
     for (var i = 0; i < 4; i++){
         var addAnswers = document.createElement("button");
         addAnswers.className ="btn-primary btn-block text-left"
         addAnswers.textContent = questionArray[index].answers[i];
-        answerButtons.appendChild(addAnswers)
+        answerButtons.appendChild(addAnswers);
+        
     };
+    index++
 };
     function addQuestions () {
-        console.log(addQuestions)
-        questions.textContent = "";
-        index++
+        // console.log(index)
+        // console.log(addQuestions)
+        questions.innerHTML = "";
         var newQuestions = questionArray[index].question;
         questions.append(newQuestions);
-
-        answerButtons.addEventListener("click", addNextAnswer, addQuestions); 
+        
             
             
         
         };
-        
+        answerButtons.addEventListener("click", addNextAnswer); answerButtons.addEventListener("click",  addQuestions); 
    
-
+       
 
   
 // THEN a timer starts and I am presented with a question
