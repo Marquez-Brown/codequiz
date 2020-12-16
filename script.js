@@ -46,31 +46,34 @@ startBtn.addEventListener("click", begin);
     startingPage.setAttribute("style", "display: none");
     console.log("starting page is hidden");
     // addQuestion = questionArray[index]
+    addNextAnswer ();
     addQuestions ();
+}
     // displayQuestion(addQuestion)
-
+        function addNextAnswer () {
     for (var i = 0; i < 4; i++){
         var addAnswers = document.createElement("button");
         addAnswers.className ="btn-primary btn-block text-left"
         addAnswers.textContent = questionArray[index].answers[i];
         answerButtons.appendChild(addAnswers)
     };
-
+};
     function addQuestions () {
         console.log(addQuestions)
         questions.textContent = "";
         index++
-        var newQuestions = questionArray.question;
+        var newQuestions = questionArray[index].question;
         questions.append(newQuestions);
 
-        // addedButtons.addEventListener("click", function() {
-        //     begin ()
+        answerButtons.addEventListener("click", addNextAnswer, addQuestions); 
+            
+            
         
-        // });
+        };
         
-    }
+   
 
-}; 
+
   
 // THEN a timer starts and I am presented with a question
 
